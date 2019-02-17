@@ -27,18 +27,13 @@ bot.on('message', msg => {
   bot.sendMessage(msg.chat.id, 'I am alive!')
 });
 
-app.get('/send_message/:message', (req, res) => {
-  bot.sendMessage(config.TELEGRAM_CHAT_ID, req.params.message)
-  return res.send('ok')
-})
-
-app.get('/stock_calibrate', (req, res) => {
+app.get('/stock_notifier_chan/stock_calibrate', (req, res) => {
   const message = `It's end of quarter. Please calibrate stock thresholds`
   bot.sendMessage(config.TELEGRAM_CHAT_ID, message)
   return res.send('ok');
 })
 
-app.get('/stock_alert', (req, res) => {
+app.get('/stock_notifier_chan/stock_alert', (req, res) => {
 
   db.serialize(function() {
     db.each("SELECT * FROM stock", function(err, row) {

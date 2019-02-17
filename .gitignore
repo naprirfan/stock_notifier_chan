@@ -1,0 +1,5 @@
+node_modules/
+public/
+database
+db_bootstrap.js
+config.js
